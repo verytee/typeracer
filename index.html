@@ -9,53 +9,61 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <header class="header-custom">
-        <div class="container-fluid px-4 py-3 d-flex flex-column justify-content-center align-items-center">
-            <h1 class="header-title mb-2">TypeRacer</h1>
-            <button class="btn btn-instructions">Instructions</button>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center my-4">
+                    <h1>TypeRacer</h1>
+                    <button class="btn btn-light mt-3" id="instructions-btn">
+                        Instructions
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="container-fluid p-4">
-        <div class="row g-4">
-            <!-- Test Area (Left Column - 2/3 width on medium+ screens) -->
-            <div class="col-12 col-md-8">
-                <div class="test-area p-3 border rounded">
+    <main>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-8">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Select Difficulty</span>
-                        <select class="form-select" id="difficultySelect" aria-label="Select Difficulty">
-                            <option value="easy" selected>Easy</option>
+                        <label class="input-group-text" for="difficulty">Select Difficulty</label>
+                        <select class="form-select" id="difficulty">
+                            <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
                             <option value="hard">Hard</option>
                         </select>
                     </div>
-
-                    <!-- Sample Text to Type -->
-                    <div class="mb-3">
-                        <label for="sampleText" class="form-label fw-bold">Test your typing speed by typing the text shown below:</label>
-                        <p id="sampleText" class="p-3 bg-light border rounded">The quick brown fox jumps over the lazy dog. Practice makes perfect, and consistent typing practice will help improve your speed and accuracy over time.</p>
+                    <div class="test-area">
+                        <p class="lead"><i class="fa-regular fa-keyboard"></i> Test your typing speed by typing the text shown below:</p>
+                        <div class="mb-3 p-3 border" id="sample-text">
+                            The cat sat on the mat.
+                        </div>
                     </div>
-
-                    <!-- Text Input Area -->
                     <div class="mb-3">
-                        <label for="userInput" class="form-label fw-bold">Your typing:</label>
-                        <textarea class="form-control" id="userInput" rows="4" placeholder="Click the start button to begin the typing test"></textarea>
+                        <label class="form-label visually-hidden" for="user-input">Type Here</label>
+                        <textarea class="form-control" id="user-input" rows="6" placeholder="Click the start button to begin the test"></textarea>
                     </div>
-
-                    <!-- Control Buttons -->
-                    <div class="d-flex justify-content-center gap-2">
-                        <button type="button" class="btn btn-outline-warning" id="startBtn">Start</button>
-                        <button type="button" class="btn btn-outline-warning" id="stopBtn">Stop</button>
-                        <button type="button" class="btn btn-outline-warning" id="retryBtn">Retry</button>
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-lg btn-outline-orange" id="start-btn">Start</button>
+                        <button class="btn btn-lg btn-outline-orange" id="stop-btn">Stop</button>
+                        <button class="btn btn-lg btn-outline-orange" id="retry-btn">Retry</button>
                     </div>
                 </div>
-            </div>
-
-            <!-- Results Area (Right Column - 1/3 width on medium+ screens) -->
-            <div class="col-12 col-md-4">
-                <div class="results-area p-3 border rounded">
-                    <h2>Results</h2>
-                    <p>Results and statistics will appear here</p>
+                <div class="col-md-4">
+                    <div id="results-area" class="text-center">
+                        <h2>Results</h2>
+                        <div>
+                            <p>Level: <span id="level">Easy</span></p>
+                            
+                        </div>
+                        <div>
+                            <p>Time: <span id="time">0</span>s</p>
+                        </div>
+                        <div>
+                            <p>WPM: <span id="wpm">0</span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
