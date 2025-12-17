@@ -40,14 +40,3 @@ header {
     font-size: 1.1rem;
     margin-bottom: 5px;
 }
-
-/* Instructions button (header) */
-.btn-instructions {
-    background-color: #e0e0e0;
-    color: #000;
-}
-.btn-instructions:hover,
-.btn-instructions:focus {
-    background-color: #d5d5d5;
-    color: #000;
-}
