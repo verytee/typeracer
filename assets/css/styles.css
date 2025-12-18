@@ -40,3 +40,13 @@ header {
     font-size: 1.1rem;
     margin-bottom: 5px;
 }
+
+/* typing feedback */
+
+.correct {
+    color: blue;
+}
+
+.incorrect {
+    color: red;
+}
