@@ -38,6 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const timerDisplay = document.getElementById('timer-display');
     const timerSpan = document.getElementById('timer');
     const performanceFeedback = document.getElementById('performance-feedback');
+    const bestWpmDisplay = document.getElementById('best-wpm');
+    const bestScoreContainer = document.getElementById('best-score-container');
+    const resetBestButton = document.getElementById('reset-best-btn');
+    const resetBestContainer = document.getElementById('reset-best-container');
 
     let startTime;
     let endTime;
@@ -142,6 +146,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedDifficulty = difficultySelect.value;
         levelDisplay.textContent = selectedDifficulty.charAt(0).toUpperCase() + selectedDifficulty.slice(1);
         
+        // Save best WPM to localStorage
+        const bestWpm = localStorage.getItem('bestWpm') ? parseInt(localStorage.getItem('bestWpm')) : 0;
+        if (wpm > bestWpm) {
+            localStorage.setItem('bestWpm', wpm);
+            bestWpmDisplay.textContent = wpm;
+        } else {
+            bestWpmDisplay.textContent = bestWpm > 0 ? bestWpm : '-';
+        }
+        bestScoreContainer.style.display = 'block';
+        resetBestContainer.style.display = 'block';
+        
         // Show performance feedback
         const feedbackElement = document.getElementById('performance-feedback');
         const feedbackText = document.getElementById('feedback-text');
@@ -230,6 +245,15 @@ document.addEventListener('DOMContentLoaded', function() {
     userInput.addEventListener('input', updateTypingFeedback);
     userInput.addEventListener('keydown', handleEnterKey);
     nextWordButton.addEventListener('click', resetTest);
+    
+    // Reset best score button
+    resetBestButton.addEventListener('click', function() {
+        if (confirm('Are you sure you want to clear your personal best WPM?')) {
+            localStorage.removeItem('bestWpm');
+            bestWpmDisplay.textContent = '-';
+            resetBestContainer.style.display = 'none';
+        }
+    });
 
     // Prevent copying and pasting from sample text
     sampleTextDiv.addEventListener('copy', function(e) {
@@ -248,6 +272,13 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSampleText();
     userInput.disabled = false;
     userInput.focus();
+    
+    // Initialise best score display
+    const bestWpm = localStorage.getItem('bestWpm');
+    if (bestWpm) {
+        bestWpmDisplay.textContent = bestWpm;
+        bestScoreContainer.style.display = 'block';
+    }
 
     // Dynamically set footer height to 1/3 of header height
     const headerEl = document.querySelector('header');

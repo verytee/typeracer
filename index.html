@@ -70,13 +70,20 @@ Press enter when you have finished and the timer will stop.
                             <p>Time: <span id="time">0</span>s</p>
                         </div>
                         <div>
-                            <p style="font-weight: bold;">WPM: <span id="wpm">0</span></p>
+                            <p>WPM: <span id="wpm">0</span></p>
                         </div>
+
                         <div id="accuracy-container" style="display: none;">
                             <p style="font-weight: bold;">Text Accuracy: <span id="accuracy">0</span>%</p>
                         </div>
                         <div id="performance-feedback" style="display: none; margin-top: 15px;">
                             <p style="font-weight: bold; font-size: 1.2rem;" id="feedback-text"></p>
+                        </div>
+                        <div id="best-score-container" style="display: none; margin-top: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;">
+                            <p style="font-weight: bold; color: #402104;">Personal Best WPM: <span id="best-wpm">-</span></p>
+                        </div>
+                        <div id="reset-best-container" style="display: none; margin-top: 15px;">
+                            <button class="btn btn-outline-secondary btn-sm" id="reset-best-btn">Clear Best Score</button>
                         </div>
                     </div>
                 </div>
