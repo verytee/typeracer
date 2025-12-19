@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "Birds sing in the trees even when no one is listening.",
         "He plays with his toys, but the less said about that the better.", 
         "The sun is bright today and it's burning my eyes.",
-        "Is Star Wars any goood? Asking for a friend.",
+        "Is Star Wars any good? Asking for a friend.",
         "It did not rain in London today."
     ];
 
@@ -43,9 +43,33 @@ document.addEventListener('DOMContentLoaded', function() {
     let testStarted = false;
     let timerInterval;
 
-    function getRandomText(textArray) {
-        const randomIndex = Math.floor(Math.random() * textArray.length);
-        return textArray[randomIndex];
+    // Track used texts for each difficulty level
+    let usedTexts = {
+        easy: [],
+        medium: [],
+        hard: []
+    };
+
+    function getRandomText(textArray, difficulty) {
+        // Get the used texts for this difficulty
+        let used = usedTexts[difficulty];
+        
+        // If all texts have been used, reset the used array
+        if (used.length >= textArray.length) {
+            used.length = 0;
+        }
+        
+        // Get available texts (not yet used)
+        let availableTexts = textArray.filter(text => !used.includes(text));
+        
+        // Select random text from available ones
+        const randomIndex = Math.floor(Math.random() * availableTexts.length);
+        const selectedText = availableTexts[randomIndex];
+        
+        // Mark this text as used
+        used.push(selectedText);
+        
+        return selectedText;
     }
 
     function updateSampleText() {
@@ -53,11 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let selectedText;
 
         if (selectedDifficulty === 'easy') {
-            selectedText = getRandomText(easyTexts);
+            selectedText = getRandomText(easyTexts, 'easy');
         } else if (selectedDifficulty === 'medium') {
-            selectedText = getRandomText(mediumTexts);
+            selectedText = getRandomText(mediumTexts, 'medium');
         } else if (selectedDifficulty === 'hard') {
-            selectedText = getRandomText(hardTexts);
+            selectedText = getRandomText(hardTexts, 'hard');
         }
 
         sampleTextDiv.textContent = selectedText;
@@ -123,17 +147,17 @@ document.addEventListener('DOMContentLoaded', function() {
         feedbackElement.style.display = 'block';
         
         if (wpm >= 70) {
-            feedbackText.textContent = '🔥 Blimey that was somme shit hot fast typing! Well done!';
-            feedbackText.style.color = '#28a745';
+            feedbackText.textContent = 'Blimey that was shit hot fast! You are definitely a typing wizard!';
+            feedbackText.style.color = '#FD625E';
         } else if (wpm >= 40) {
-            feedbackText.textContent = '✓ Nice job, that is a comfortable speed, keep practicing to see if you can do even better!';
-            feedbackText.style.color = '#17a2b8';
+            feedbackText.textContent = 'Nice job, that is a comfortable speed, keep practicing to see if you can do even better!';
+            feedbackText.style.color = '#8d6fd1';
         } else if (wpm >= 20) {
-            feedbackText.textContent = '⚠ Speed comes with practice. Keep trying and I know you will improve!';
-            feedbackText.style.color = '#ffc107';
+            feedbackText.textContent = 'Speed and accuracy both come with practice. Keep trying and you will improve!';
+            feedbackText.style.color = '#094782';
         } else {
-            feedbackText.textContent = '🐢 You took your time and that is a good way to learn. Keep going and your score will improve.';
-            feedbackText.style.color = '#dc3545';
+            feedbackText.textContent = "You probably don't need me to tell you that wasn't great, but you have to start somewhere. Keep going and your score will improve.";
+            feedbackText.style.color = '#026645';
         }
     }
 
