@@ -5,14 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
         "Birds sing in the trees even when no one is listening.",
         "She likes to type away all day long.",
         "He plays with his toys, but the less said about that the better.", 
-        "Working nine to five, what a way to make a living.",
         "The sun is bright today and it's burning my eyes.", 
         "Children play outside so drive carefully.",
         "Verity is a Software Engineer lol."
     ];
 
     const mediumTexts = [
-        "Verity fixed a bug in the code that had almost brought her to tears today.",
         "Before calling a meeting, ask yourself if the issue can be resolved with an email instead.",
         "Reading books expands your vocabulary and imagination, but I find roleplaying much more fun.", 
         "It didn't rain in London today, and it was hot topic amongst the locals.",
@@ -37,19 +35,17 @@ document.addEventListener('DOMContentLoaded', function() {
     "If you can type this entire sentence without looking at your fingers once, then I'm impressed. Let me know what you are having for your dinner tonight."
 ];
 
-   const difficultySelect = document.getElementById('difficulty');
+    const difficultySelect = document.getElementById('difficulty');
     const sampleTextDiv = document.getElementById('sample-text');
-    const startButton = document.getElementById('start-btn');
-    const stopButton = document.getElementById('stop-btn');
-    const retryButton = document.getElementById('retry-btn');
     const timeDisplay = document.getElementById('time');
     const userInput = document.getElementById('user-input');
     const levelDisplay = document.getElementById('level');
     const wpmDisplay = document.getElementById('wpm');
+    const retryButton = document.getElementById('retry-btn');
 
     let startTime;
     let endTime;
-    let isGameRunning = false;
+    let testStarted = false;
 
     function getRandomText(textArray) {
         const randomIndex = Math.floor(Math.random() * textArray.length);
@@ -71,16 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         sampleTextDiv.textContent = selectedText;
     }
 
-    function startTest() {
-        startTime = new Date();
-        startButton.style.display = 'none';
-        stopButton.style.display = 'inline-block';
-        userInput.disabled = false;
-        userInput.value = ''; // Clear the input area
-        userInput.focus();
-        isGameRunning = true;
-    }
-
     function stopTest() {
         endTime = new Date();
         const timeTaken = (endTime - startTime) / 1000; // time in seconds
@@ -88,10 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         displayResults(timeTaken, wpm);
 
-        startButton.style.display = 'inline-block';
-        stopButton.style.display = 'none';
-        userInput.disabled = true;
-        isGameRunning = false;
+        userInput.disabled = true;        
+        retryButton.disabled = false;
+        testStarted = false;
     }
 
     function calculateWPM(timeTaken) {
@@ -118,6 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateTypingFeedback() {
+
+        if (!testStarted) {
+            startTime = new Date();
+            testStarted = true;
+            retryButton.disabled = true;
+        }
+
         const sampleText = sampleTextDiv.textContent.trim();
         const userText = userInput.value.trim();
         const sampleWords = sampleText.split(" ");
@@ -138,33 +130,26 @@ document.addEventListener('DOMContentLoaded', function() {
         sampleTextDiv.innerHTML = feedbackHTML.trim();
     }
 
+    function handleEnterKey(event) {
+        if (event.key === 'Enter') {
+            stopTest();
+        }
+    }
+
     function resetTest() {
         userInput.value = '';
-        userInput.disabled = true;
-        startButton.style.display = 'inline-block';
-        stopButton.style.display = 'none';
+        userInput.disabled = false;
+        updateSampleText();
         timeDisplay.textContent = '0';
         wpmDisplay.textContent = '0';
-        updateSampleText();
+        testStarted = false;
+        retryButton.disabled = true;
     }
 
     difficultySelect.addEventListener('change', updateSampleText);
-    startButton.addEventListener('click', startTest);
-    stopButton.addEventListener('click', stopTest);
-    retryButton.addEventListener('click', resetTest);
     userInput.addEventListener('input', updateTypingFeedback);
-
-    // Keyboard controls: Enter to start/stop
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            if (!isGameRunning) {
-                startTest();
-            } else {
-                stopTest();
-            }
-        }
-    });
+    userInput.addEventListener('keydown', handleEnterKey);
+    retryButton.addEventListener('click', resetTest);
 
     // Initialize with a random text from the default difficulty level
     updateSampleText();
