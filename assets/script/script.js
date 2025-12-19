@@ -125,16 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
         feedbackElement.style.display = 'block';
         
         if (wpm >= 70) {
-            feedbackText.textContent = '🔥 Blimey that was shit hot fast! Above Average Speed!';
+            feedbackText.textContent = '🔥 Blimey that was somme shit hot fast typing! Well done!';
             feedbackText.style.color = '#28a745';
         } else if (wpm >= 40) {
-            feedbackText.textContent = '✓ You did good! Average Speed';
+            feedbackText.textContent = '✓ Nice job, that is a comfortable speed, keep practicing to see if you can do even better!';
             feedbackText.style.color = '#17a2b8';
         } else if (wpm >= 20) {
-            feedbackText.textContent = '⚠ That was slooow - Keep Practicing!';
+            feedbackText.textContent = '⚠ Speed comes with practice. Keep trying and I know you will improve!';
             feedbackText.style.color = '#ffc107';
         } else {
-            feedbackText.textContent = '🐢 Omg super slow, did you forget to press enter or something?';
+            feedbackText.textContent = '🐢 You took your time and that is a good way to learn. Keep going and your score will improve.';
             feedbackText.style.color = '#dc3545';
         }
     }
