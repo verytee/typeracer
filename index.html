@@ -68,7 +68,10 @@
                             <p>Time: <span id="time">0</span>s</p>
                         </div>
                         <div>
-                            <p>WPM: <span id="wpm">0</span></p>
+                            <p style="font-weight: bold;">WPM: <span id="wpm">0</span></p>
+                        </div>
+                        <div id="accuracy-container" style="display: none;">
+                            <p style="font-weight: bold;">Text Accuracy: <span id="accuracy">0</span>%</p>
                         </div>
                         <div id="performance-feedback" style="display: none; margin-top: 15px;">
                             <p style="font-weight: bold; font-size: 1.2rem;" id="feedback-text"></p>
@@ -86,7 +89,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="instructions-modal-label">Instructions</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p>Welcome to the TypeRacer typing test!</p>
@@ -94,14 +96,16 @@
                     <ol>
                         <li>Choose a difficulty level from the dropdown menu.</li>
                         <li>The test will start as soon as you begin typing.</li>
-                        <li>Press the "Enter" key to stop the test.</li>
+                        <li>Press the "Enter" key when you have finished typing the sample text.</li>
                         <li>Your results will be displayed in the Results area.</li>
-                        <li>You can retry the test by clicking the "Have another go!" button.</li>
+                        <li>WPM has calculated your average words per minute.</li>
+                        <li>Clicking for a new text when you are ready to go again.</li>
+                        <li>You can change your difficulty level at any time.</li>
                     </ol>
                     <p>Good luck and have fun!</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn" id="modal-close-btn" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

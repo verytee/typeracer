@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
         endTime = new Date();
         clearInterval(timerInterval);
         const timeTaken = (endTime - startTime) / 1000; // time in seconds
-        const wpm = calculateWPM(timeTaken);
+        const result = calculateWPM(timeTaken);
         
-        displayResults(timeTaken, wpm);
+        displayResults(timeTaken, result);
 
         userInput.disabled = true;        
         nextWordButton.style.display = 'inline-block';
@@ -97,13 +97,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 correctWords++;
             }
         }
-    
-        return Math.round((correctWords / timeTaken) * 60);
+        
+        const wpm = Math.round((correctWords / timeTaken) * 60);
+        const accuracy = sampleWords.length > 0 ? Math.round((correctWords / sampleWords.length) * 100) : 0;
+        
+        return { wpm, accuracy };
     }
 
-    function displayResults(timeTaken, wpm) {
+    function displayResults(timeTaken, result) {
+        const wpm = result.wpm;
+        const accuracy = result.accuracy;
+        
+        console.log('displayResults called with wpm:', wpm, 'accuracy:', accuracy);
+        
         timeDisplay.textContent = timeTaken.toFixed(2);
         wpmDisplay.textContent = wpm;
+        document.getElementById('accuracy').textContent = accuracy;
+        const accuracyContainer = document.getElementById('accuracy-container');
+        accuracyContainer.style.display = 'block';
+        console.log('Accuracy container display set to:', accuracyContainer.style.display);
         const selectedDifficulty = difficultySelect.value;
         levelDisplay.textContent = selectedDifficulty.charAt(0).toUpperCase() + selectedDifficulty.slice(1);
         
@@ -113,16 +125,16 @@ document.addEventListener('DOMContentLoaded', function() {
         feedbackElement.style.display = 'block';
         
         if (wpm >= 70) {
-            feedbackText.textContent = '🔥 Blazing Fast! Above Average Speed!';
+            feedbackText.textContent = '🔥 Blimey that was shit hot fast! Above Average Speed!';
             feedbackText.style.color = '#28a745';
         } else if (wpm >= 40) {
-            feedbackText.textContent = '✓ Good Job! Average Speed';
+            feedbackText.textContent = '✓ You did good! Average Speed';
             feedbackText.style.color = '#17a2b8';
         } else if (wpm >= 20) {
-            feedbackText.textContent = '⚠ Slow Speed - Keep Practicing!';
+            feedbackText.textContent = '⚠ That was slooow - Keep Practicing!';
             feedbackText.style.color = '#ffc107';
         } else {
-            feedbackText.textContent = '🐢 Super Slow - Time to Train!';
+            feedbackText.textContent = '🐢 Omg super slow, did you forget to press enter or something?';
             feedbackText.style.color = '#dc3545';
         }
     }
@@ -162,7 +174,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleEnterKey(event) {
+        console.log('handleEnterKey triggered, key:', event.key, 'testStarted:', testStarted);
         if (event.key === 'Enter' && testStarted) {
+            console.log('Stopping test');
             event.preventDefault();
             stopTest();
         }
@@ -175,6 +189,8 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSampleText();
         timeDisplay.textContent = '0';
         wpmDisplay.textContent = '0';
+        document.getElementById('accuracy-container').style.display = 'none';
+        document.getElementById('accuracy').textContent = '0';
         timerDisplay.style.display = 'none';
         timerSpan.textContent = '0';
         performanceFeedback.style.display = 'none';

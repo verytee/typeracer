@@ -74,7 +74,42 @@ header {
 }
 
 
-/* results-area */
+/* Modal styling */
+.modal-content {
+    background-color: #FCFBF4;
+    border: 2px solid #b6b2a5;
+}
+
+.modal-header {
+    background-color: #FCFBF4;
+    border: 2px solid #b6b2a5;
+}
+
+.modal-title {
+    color: #402104;
+    font-weight: bold;
+}
+
+.modal-footer {
+    background-color: #FCFBF4;
+    border: 2px solid #b6b2a5;
+}
+
+#modal-close-btn {
+    background-color: #402104;
+    color: #ead5a8;
+    border: 2px solid #402104;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+#modal-close-btn:hover {
+    background-color: #ead5a8;
+    color: #402104;
+}
+
+.modal-body {
+    color: #402104;
+}
 
 #results-area {
     box-shadow: 0 0 10px #402104;
