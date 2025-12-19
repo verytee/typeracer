@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 512'><path fill='%23402104' d='M48 80a48 48 0 1 1 96 0A48 48 0 1 1 48 80zM0 224c0-17.7 14.3-32 32-32H96c17.7 0 32 14.3 32 32V448h32c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H64V256H32c-17.7 0-32-14.3-32-32z'/></svg>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
         <title>TypeRacer</title>
 
@@ -14,10 +16,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center my-4">
-                    <h1>TypeRacer</h1>
+                    <h1>T y p e R a c e r</h1>
                     <button class="btn btn-light mt-3" id="instructions-btn" data-bs-toggle="modal"
                         data-bs-target="#instructions-modal">
-                        <i class="fas fa-info-circle"></i> Instructions
+                        <i class="fa-solid fa-info"></i>  Instructions
                     </button>
                 </div>
             </div>
@@ -46,8 +48,8 @@
                         <label class="form-label visually-hidden" for="user-input">Type Here</label>
                         <textarea class="form-control" id="user-input" rows="6"
                             placeholder="
-                            The timer will begin when you start typing. 
-                            Press enter when you have finished the text and the timer will stop.
+The timer will begin when you start typing. 
+Press enter when you have finished and the timer will stop.
                             "></textarea>
                     </div>
                     <div class="mb-3">
@@ -91,7 +93,7 @@
                     <h5 class="modal-title" id="instructions-modal-label">Instructions</h5>
                 </div>
                 <div class="modal-body">
-                    <p>Welcome to the TypeRacer typing test!</p>
+                    <p>Welcome to the TypeRacer typing test</p>
                     <p>Here's how it works:</p>
                     <ol>
                         <li>Choose a difficulty level from the dropdown menu.</li>
@@ -100,7 +102,6 @@
                         <li>Your results will be displayed in the Results area.</li>
                         <li>WPM has calculated your average words per minute.</li>
                         <li>Clicking for a new text when you are ready to go again.</li>
-                        <li>You can change your difficulty level at any time.</li>
                     </ol>
                     <p>Good luck and have fun!</p>
                 </div>
@@ -111,9 +112,14 @@
         </div>
     </div>
 
+    <footer id="site-footer" class="text-center py-3 bg-light mt-auto">
+        <span class="mb-0" style="color: black;">TypeRacer</span>
+    </footer>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/script/script.js"></script>
+
 </body>
 </html>

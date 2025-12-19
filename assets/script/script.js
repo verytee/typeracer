@@ -4,27 +4,25 @@ document.addEventListener('DOMContentLoaded', function() {
         "Birds sing in the trees even when no one is listening.",
         "He plays with his toys, but the less said about that the better.", 
         "The sun is bright today and it's burning my eyes.",
-        "I have never properly watched Star Wars but I hear it's good.",
-        "You can love someone and still mute their messages."
+        "Is Star Wars any goood? Asking for a friend.",
+        "It did not rain in London today."
     ];
 
     const mediumTexts = [
         "Before calling a meeting, ask yourself if the issue can be resolved with an email instead.",
         "Reading books expands your vocabulary and imagination, but I find roleplaying much more fun.", 
-        "It didn't rain in London today, and it was hot topic amongst all the locals.",
         "I'm just reminding you that the washing up needs doing and your bath towel is on the floor.",
         "The poor dog still ran after the ball that you only pretended to throw.",
         "I'm terrible for apologising when someone else barges into me. It's probably because I'm British.",
-        "Did you know that in New Zealand, they celebrate Christmas during the summer? My mind is blown!",
+        "Did you know that in New Zealand, they celebrate Christmas during the summer? Wild, right?"
     ];
 
     const hardTexts = [
     "The phenomenon of quantum entanglement challenges our conventional understanding of physics and locality; Einstein famously referred to it as spooky action at a distance.",
-    "Artificial intelligence and machine learning algorithms are revolutionising industries by enabling computers to learn from data patterns and make autonomous decisions.",
     "The philosophical implications of consciousness remain one of the most perplexing questions in neuroscience, challenging our understanding of subjective experience and self-awareness.",
     "She typed furiosly, annoyed that there was a typing error in the sample text that she still had to copy down perfectly to get a good WPM score.",
-    "Anthropological studies suggest that early hominids didn't have to worry about syntax errors or undefined functions, however they were far more likely to be eaten by a bear.",
-    "The meticulous orchestration of microservices requires a level of patience usually reserved for saints, teachers, and people perserving with this typing test.",
+    "Anthropological studies suggest that early hominids didn't have to worry about typos, however they were statistically far more likely to be eaten by a bear.",
+    "The meticulous orchestration of microservices requires a level of patience usually reserved for teachers, and people persevering with a typing test.",
     "The architectural integrity of a skyscraper is paramount, yet we build our entire digital economy on top of a single library maintained by one tired person in Nebraska.",
     "If you can type this entire sentence without looking at your fingers once, then I'm impressed. Let me know what you are having for your dinner tonight because I'm geninely curious."
 ];
@@ -225,4 +223,15 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSampleText();
     userInput.disabled = false;
     userInput.focus();
+
+    // Dynamically set footer height to 1/3 of header height
+    const headerEl = document.querySelector('header');
+    const footerEl = document.getElementById('site-footer');
+    function setFooterHeight() {
+        if (!headerEl || !footerEl) return;
+        const h = headerEl.offsetHeight;
+        footerEl.style.minHeight = Math.round(h / 3) + 'px';
+    }
+    setFooterHeight();
+    window.addEventListener('resize', setFooterHeight);
 });

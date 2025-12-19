@@ -16,6 +16,21 @@ header {
     font-weight: 900;
 }
 
+/* footer with same background as header */
+#site-footer {
+    background: url("../images/head.webp") center/cover no-repeat;
+    color: #402104;
+}
+
+body > footer {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+
 /* buttons */
 
 .input-group-text {
