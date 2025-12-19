@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const easyTexts = [
 		"The cat shat on the rug I paid for.",
-        "Birds sing in the trees even when no one is listening.",
+        "Oh look! Can you see that squirrel in the tree?",
         "He plays with his toys, but the less said about that the better.", 
         "The sun is bright today and it's burning my eyes.",
-        "Is Star Wars any good? Asking for a friend.",
-        "It did not rain in London today."
+        "Is Star Wars any good? Asking for a friend."
     ];
 
     const mediumTexts = [
@@ -14,17 +13,19 @@ document.addEventListener('DOMContentLoaded', function() {
         "I'm just reminding you that the washing up needs doing and your bath towel is on the floor.",
         "The poor dog still ran after the ball that you only pretended to throw.",
         "I'm terrible for apologising when someone else barges into me. It's probably because I'm British.",
-        "Did you know that in New Zealand, they celebrate Christmas during the summer? Wild, right?"
+        "A fun fact I have about New Zealand is that they actually celebrate Christmas during the summer.",
+        "Let me know what you are having for your dinner tonight because I'm geninely curious. I think I'm going to make spaghetti."
     ];
 
     const hardTexts = [
+    "While coding this, my daughter angrily shouted from the living room, 'Mummy, didn't I ask for cold milk with a straw?' She's right, she did ask for that about ten minutes ago.",
     "The phenomenon of quantum entanglement challenges our conventional understanding of physics and locality; Einstein famously referred to it as spooky action at a distance.",
     "The philosophical implications of consciousness remain one of the most perplexing questions in neuroscience, challenging our understanding of subjective experience and self-awareness.",
     "She typed furiosly, annoyed that there was a typing error in the sample text that she still had to copy down perfectly to get a good WPM score.",
     "Anthropological studies suggest that early hominids didn't have to worry about typos, however they were statistically far more likely to be eaten by a bear.",
-    "The meticulous orchestration of microservices requires a level of patience usually reserved for teachers, and people persevering with a typing test.",
+    "The meticulous orchestration of microservices requires a level of patience usually reserved for teachers, and anyone persevering through a typing test.",
     "The architectural integrity of a skyscraper is paramount, yet we build our entire digital economy on top of a single library maintained by one tired person in Nebraska.",
-    "If you can type this entire sentence without looking at your fingers once, then I'm impressed. Let me know what you are having for your dinner tonight because I'm geninely curious."
+    "Should you succeed in typing this entire sentence without once glancing at your fingers, you may qualify for entry into a competition to win a Home Bargains voucher (entries submitted after 19th December 2025 are ineligible)."
 ];
 
     const difficultySelect = document.getElementById('difficulty');
