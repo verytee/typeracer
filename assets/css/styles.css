@@ -3,6 +3,7 @@
 
 body {
     font-family: Nunito, sans-serif;
+    background-color: #fbf6ed;
 }
 
 h1 {
@@ -10,28 +11,73 @@ h1 {
 }
 
 header {
-    background-color: #ff8400;
-    color: white;
+    background: url("../images/head.webp") center/cover no-repeat;
+    color: #402104;
+    font-weight: 900;
 }
 
 /* buttons */
 
-.btn-outline-orange {
-    border: 2px solid #ff8400;
-    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    margin: 5px;
+.input-group-text {
+    background-color: #402104;
+    color: #ead5a8;
+    border: 2px solid #402104;
 }
 
-.btn-outline-orange:hover {
-    background-color: #ff8400;
-    color: #fff;
+#difficulty {
+    width: auto;
+    max-width: 200px;
+    background-color: #FCFBF4;
+}
+
+#difficulty:focus {
+    background-color: #FCFBF4;
+    outline: none;
+}
+
+#sample-text {
+    background-color: #FCFBF4;
+}
+
+#user-input {
+    background-color: #FCFBF4;
+}
+
+#instructions-btn {
+    background-color: #402104;
+    color: #ead5a8;
+    border: 2px solid #402104;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+#instructions-btn:hover {
+    background-color: #ead5a8;
+    color: #402104;
+}
+
+#next-word-btn {
+    background-color: #402104;
+    color: #ead5a8;
+    border: 2px solid #402104;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+#next-word-btn:hover {
+    background-color: #ead5a8;
+    color: #402104;
+}
+
+.btn-outline-orange {
+    border: 2px solid #402104;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    margin: 5px;
 }
 
 
 /* results-area */
 
 #results-area {
-    box-shadow: 0 0 10px #ff8400;
+    box-shadow: 0 0 10px #402104;
     border-radius: 10px;
     padding: 20px;
 }
@@ -44,9 +90,9 @@ header {
 /* typing feedback */
 
 .correct {
-    color: blue;
+    color: #402104;
 }
 
 .incorrect {
-    color: red;
+    color: maroon;
 }
